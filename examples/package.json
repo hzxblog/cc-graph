@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "author": "hanzhixiong <hanzhixiong@cestc.cn>",
+  "scripts": {
+    "dev": "vite -c ../vite.config.js",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "vue": "^3.2.47",
+    "vue-router": "4"
+  },
+  "devDependencies": {}
+}

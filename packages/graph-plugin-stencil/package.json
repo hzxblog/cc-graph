@@ -1,0 +1,23 @@
+{
+  "name": "@cc/graph-plugin-stencil",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "license": "ISC",
+  "private": true,
+  "files": [
+    "dist",
+    "es",
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite build -c ../../vite.config.js -w",
+    "build": "vite build -c ../../vite.config.js"
+  },
+  "dependencies": {
+    "@antv/x6-plugin-dnd": "^2.0.5",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {}
+}
