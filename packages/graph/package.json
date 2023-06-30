@@ -2,7 +2,7 @@
   "name": "@cc/graph",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "es/index.js",
   "type": "module",
   "private": true,
   "files": [
@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "dev": "vite build --config ../../vite.config.js -w",
-    "build": "vite build --config ../../vite.config.js"
+    "build": "vite build --config ../../vite.config.js",
+    "build:test": "rollup -c ../../rollup.config.js --bundleConfigAsCjs"
   },
   "author": "",
   "license": "ISC",

@@ -2,7 +2,7 @@
   <div class="content">
     <div ref="stencilRef" style="width: 300px;"></div>
     <div class="graph">
-      <DagGraph :initGraph="initGraph"/>
+      <VDagGraph :initGraph="initGraph"/>
     </div>
   </div>
 </template>
@@ -10,8 +10,8 @@
 <script setup>
 import '@cc-design/web-vue/es/style/theme/css-variables.less';
 import { onMounted, ref } from 'vue';
-import { VStencil } from '@cc/graph-plugin-stencil';
-import { DagGraph } from '@cc/graph';
+import { VDagGraph, VStencil } from '@cc/graph';
+import '@cc/graph/es/style.css';
 
 const stencilRef = ref(null);
 
@@ -20,7 +20,6 @@ const graph = ref({});
 const initGraph = (graph) => {
 
   graph.value = graph;
-
   const Stencil = new VStencil({
     title: '标题名称',
     target: graph,

@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup name="VDagGraph">
 import { ref, onMounted } from 'vue';
 import { DagGraph } from "../DagGraph";
 import { getTeleport } from "@antv/x6-vue-shape";

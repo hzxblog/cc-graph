@@ -2,7 +2,8 @@
   "name": "@cc/graph-plugin-stencil",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "es/index.js",
+  "module": "src/index.js",
   "license": "ISC",
   "private": true,
   "files": [

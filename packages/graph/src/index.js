@@ -2,4 +2,6 @@ export { default as TaskNode } from './components/TaskNode/index.js'
 
 export * from './DagGraph.js';
 
-export { default as DagGraph } from './components/DagGraph.vue';
+export * from './components/Stencil/index.js';
+
+export { default as VDagGraph } from './components/DagGraph.vue';

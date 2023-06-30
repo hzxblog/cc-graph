@@ -1,0 +1,61 @@
+.task-node[data-v-5d44d590] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  background: #fff;
+  border: 3px solid var(--color-border-3);
+  color: var(--color-text-2);
+  border-radius: 8px;
+  padding: 10px 8px;
+  box-sizing: border-box;
+}
+.node-label[data-v-5d44d590] {
+  flex: 1;
+  width: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.widget-stencil-group-content-node {
+  cursor: pointer;
+  padding-left: 32px;
+  border-radius: 4px;
+}
+.widget-stencil-group-content-node:hover {
+  background: var(--color-fill-2);
+}
+.widget-stencil-group-content-node,
+.widget-stencil-group-title {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-2);
+}
+.widget-stencil-group:not(:last-child) {
+  border-bottom: 1px solid var(--color-border-2);
+  padding-bottom: 8px;
+}
+.widget-stencil-group-title {
+  cursor: pointer;
+}
+.widget-stencil-group-title img {
+  margin: 0 8px;
+  cursor: pointer;
+}
+.widget-stencil-content {
+  padding: 0 12px;
+}
+.widget-stencil-title {
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.widget-stencil-title-name {
+  color: var(--color-text-1);
+  font-size: 16px;
+  font-weight: bold;
+}

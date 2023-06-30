@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 export default defineConfig({
   css: {
@@ -11,17 +12,33 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    VueSetupExtend(),
     vueJsx(),
   ],
   build:{
-    assetsDir: '',
+    target: 'modules',
+    outDir: 'es',
+    emptyOutDir: false,
+    minify: false,
+    lib: {
+      entry: 'src/index.js',
+      formats: ['es']
+    },
     rollupOptions:{
-      input: 'src/index.js',
-      output: {
-        entryFileNames: `[name].js`,
-        chunkFileNames: "[name].js",
-        assetFileNames: "[name][extname]"
-      }
+      external: ['vue'],
+      input: ['src/index.js'],
+      output: [
+        {
+          format: 'es',
+          dir: 'es',
+          entryFileNames: '[name].js',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+          globals: {
+            vue: 'Vue',
+          },
+        }
+      ]
     },
   }
 })
