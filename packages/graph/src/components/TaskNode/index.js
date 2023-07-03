@@ -12,7 +12,7 @@ const port = {
   },
 }
 
-export default  {
+export default {
   shape: "task-node",
   component: TaskNode,
   strokeWidth: '1',

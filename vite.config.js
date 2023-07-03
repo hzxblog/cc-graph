@@ -2,6 +2,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite';
+import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+// import { createStyleImportPlugin } from 'vite-plugin-style-import'
 
 export default defineConfig({
   css: {
@@ -12,6 +16,27 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    // createStyleImportPlugin({
+    //   libs: [
+    //     {
+    //       libraryName: '@arco-design/web-vue',
+    //       esModule: true,
+    //       resolveStyle: (name) => {
+    //         return `@arco-design/web-vue/es/${name}/style/css.js`
+    //       },
+    //     }
+    //   ]
+    // }),
+    AutoImport({
+      resolvers: [ArcoResolver()],
+    }),
+    Components({
+      resolvers: [
+        ArcoResolver({
+          sideEffect: true
+        })
+      ]
+    }),
     VueSetupExtend(),
     vueJsx(),
   ],
@@ -22,7 +47,7 @@ export default defineConfig({
     minify: false,
     lib: {
       entry: 'src/index.js',
-      formats: ['es']
+      formats: ['es', 'cjs']
     },
     rollupOptions:{
       external: ['vue'],

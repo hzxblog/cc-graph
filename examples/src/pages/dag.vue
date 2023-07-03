@@ -1,50 +1,53 @@
 <template>
   <div class="content">
-    <div ref="stencilRef" style="width: 300px;"></div>
-    <div class="graph">
-      <VDagGraph :initGraph="initGraph"/>
-    </div>
+    <VGraph
+      mode="dag"
+      title="标题名称"
+      :initGraph="initGraph"
+      :minimap="true"
+      :is-zoom="true"
+      :groups="groups"
+    />
   </div>
 </template>
 
 <script setup>
 import '@cc-design/web-vue/es/style/theme/css-variables.less';
 import { onMounted, ref } from 'vue';
-import { VDagGraph, VStencil } from '@cc/graph';
+import { VGraph } from '@cc/graph';
 import '@cc/graph/es/style.css';
-
-const stencilRef = ref(null);
+import sqlIcon from '../assets/svg/sql.svg'
+import syncIcon from '../assets/svg/sync.svg'
 
 const graph = ref({});
 
-const initGraph = (graph) => {
-
-  graph.value = graph;
-  const Stencil = new VStencil({
-    title: '标题名称',
-    target: graph,
-    container: stencilRef.value,
-    groups: [
+const groups = [
+  {
+    title: '数据加工',
+    children: [
       {
-        title: '数据加工',
-        children: [
-          {
-            type: 'task-node',
-            label: 'SQL',
-          }
-        ]
-      },
-      {
-        title: '数据集成',
-        children: [
-          {
-            type: 'task-node',
-            label: '离线同步',
-          }
-        ]
+        type: 'task-node',
+        label: 'SQL',
+        icon: sqlIcon
       }
     ]
-  })
+  },
+  {
+    title: '数据集成',
+    children: [
+      {
+        type: 'task-node',
+        label: '离线同步',
+        icon: syncIcon
+      }
+    ]
+  }
+]
+
+onMounted(() => {})
+
+const initGraph = (graph) => {
+  graph.value = graph;
 }
 
 

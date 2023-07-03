@@ -17,6 +17,7 @@
             class="widget-stencil-group-content-node"
             @mousedown="startDrag(child, $event)"
           >
+            <img v-if="child.icon" class="widget-stencil-group-content-node-icon" :src="child.icon" />
             {{ child.label }}
           </li>
         </ul>
@@ -69,6 +70,9 @@ function startDrag(child, e) {
 </script>
 
 <style lang="less">
+.widget-stencil-group-content-node-icon {
+  margin-right: 6px;
+}
 .widget-stencil-group-content-node {
   cursor: pointer;
   padding-left: 32px;
@@ -79,6 +83,7 @@ function startDrag(child, e) {
 }
 .widget-stencil-group-content-node,
 .widget-stencil-group-title {
+  font-size: 14px;
   height: 36px;
   display: flex;
   align-items: center;

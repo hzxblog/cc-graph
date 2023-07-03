@@ -4,4 +4,4 @@ export * from './DagGraph.js';
 
 export * from './components/Stencil/index.js';
 
-export { default as VDagGraph } from './components/DagGraph.vue';
+export { default as VGraph } from './components/VGraph.vue';

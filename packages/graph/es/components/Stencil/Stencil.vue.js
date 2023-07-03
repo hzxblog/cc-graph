@@ -1,4 +1,4 @@
-import { ref, onMounted, openBlock, createElementBlock, createElementVNode, toDisplayString, Fragment, renderList, createCommentVNode } from "vue";
+import { ref, onMounted, openBlock, createElementBlock, createElementVNode, toDisplayString, Fragment, renderList, createCommentVNode, createTextVNode } from "vue";
 import _imports_0 from "./arrow.png.js";
 import { Dnd } from "../../node_modules/@antv/x6-plugin-dnd/es/index.js";
 import "./Stencil.vue2.js";
@@ -17,6 +17,7 @@ const _hoisted_8 = {
   class: "widget-stencil-group-content"
 };
 const _hoisted_9 = ["onMousedown"];
+const _hoisted_10 = ["src"];
 const _sfc_main = {
   __name: "Stencil",
   props: {
@@ -77,7 +78,14 @@ const _sfc_main = {
                     key: index2,
                     class: "widget-stencil-group-content-node",
                     onMousedown: ($event) => startDrag(child, $event)
-                  }, toDisplayString(child.label), 41, _hoisted_9);
+                  }, [
+                    child.icon ? (openBlock(), createElementBlock("img", {
+                      key: 0,
+                      class: "widget-stencil-group-content-node-icon",
+                      src: child.icon
+                    }, null, 8, _hoisted_10)) : createCommentVNode("", true),
+                    createTextVNode(" " + toDisplayString(child.label), 1)
+                  ], 40, _hoisted_9);
                 }), 128))
               ])) : createCommentVNode("", true)
             ]);

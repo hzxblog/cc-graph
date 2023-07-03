@@ -1,4 +1,5 @@
-import { defineComponent, ref, onMounted, openBlock, createElementBlock, createElementVNode, createVNode, unref } from "vue";
+import { defineComponent, ref, onMounted, openBlock, createElementBlock, createElementVNode, createBlock, createCommentVNode, createVNode, unref } from "vue";
+import _sfc_main$1 from "./Zoom.vue.js";
 import { DagGraph } from "../DagGraph.js";
 import "../node_modules/@antv/x6-vue-shape/es/node.js";
 import "../node_modules/@antv/x6-vue-shape/es/view.js";
@@ -8,7 +9,7 @@ import { Selection } from "../node_modules/@antv/x6-plugin-selection/es/index.js
 import { MiniMap } from "../node_modules/@antv/x6-plugin-minimap/es/index.js";
 import "./TaskNode/index.vue2.js";
 import { VStencil } from "./Stencil/index.js";
-import "./DagGraph.vue2.js";
+import "./VGraph.vue2.js";
 const _hoisted_1 = { class: "cc-graph" };
 const _hoisted_2 = { class: "graph-container" };
 const __default__ = defineComponent({
@@ -16,10 +17,21 @@ const __default__ = defineComponent({
 });
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
   props: {
+    title: {
+      type: String
+    },
+    mode: {
+      type: String,
+      default: "dag"
+    },
     initGraph: {
       type: Function,
       default: () => {
       }
+    },
+    isZoom: {
+      type: Boolean,
+      default: false
     },
     minimap: {
       type: Boolean,
@@ -36,32 +48,33 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
     const TeleportContainer = getTeleport();
     const minimapRef = ref(null);
     const containerRef = ref(null);
+    const graph = ref();
     onMounted(() => {
-      const graph = new DagGraph({
-        container: containerRef.value
-      });
+      if (props.mode === "dag") {
+        graph.value = new DagGraph({
+          container: containerRef.value
+        });
+      }
       if (props.groups.length) {
         new VStencil({
-          title: "标题名称",
-          target: graph,
+          title: props.title,
+          target: graph.value,
           container: stencilRef.value,
           groups: props.groups
         });
       }
-      graph.use(
-        new Selection(
-          {
-            multiple: true,
-            rubberEdge: true,
-            rubberNode: true,
-            modifiers: "shift",
-            rubberband: true,
-            showNodeSelectionBox: true
-          }
-        )
+      graph.value.use(
+        new Selection({
+          multiple: true,
+          rubberEdge: true,
+          rubberNode: true,
+          modifiers: "shift",
+          rubberband: true,
+          showNodeSelectionBox: true
+        })
       );
       if (props.minimap) {
-        graph.use(
+        graph.value.use(
           new MiniMap({
             container: minimapRef.value,
             height: 136,
@@ -70,7 +83,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
           })
         );
       }
-      props.initGraph(graph);
+      props.initGraph(graph.value);
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1, [
@@ -90,6 +103,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
             class: "minimap"
           }, null, 512)
         ]),
+        __props.isZoom ? (openBlock(), createBlock(_sfc_main$1, { key: 0 })) : createCommentVNode("", true),
         createVNode(unref(TeleportContainer))
       ]);
     };
